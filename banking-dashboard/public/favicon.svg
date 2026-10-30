@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <rect width="40" height="40" rx="8" fill="#00D4B2" />
+  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" fill="#0A2540" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" letter-spacing="0.5px">PV</text>
+</svg>

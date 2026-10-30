@@ -1,0 +1,138 @@
+[
+  {
+    "id": "u-001",
+    "name": "Gowtham",
+    "age": 32,
+    "city": "Chennai",
+    "employment": "Salaried",
+    "monthlyIncome": 150000,
+    "creditScore": 790,
+    "existingEmi": 70000,
+    "kyc": "Verified",
+    "maskedPan": "XXXXX1234X",
+    "customerSinceYears": 6,
+    "holdings": {
+      "sav-001": "Active",
+      "cc-001": "Active",
+      "ln-001": "Active",
+      "ln-003": "Active",
+      "sav-003": "Active",
+      "wl-002": "Active"
+    },
+    "accounts": {
+      "availableBalance": 485000,
+      "fixedDeposits": 200000,
+      "investments": 150000,
+      "creditLimit": 830000,
+      "creditUsed": 150000
+    }
+  },
+  {
+    "id": "u-002",
+    "name": "Divya",
+    "age": 28,
+    "city": "Kochi",
+    "employment": "Salaried",
+    "monthlyIncome": 60000,
+    "creditScore": 735,
+    "existingEmi": 12000,
+    "kyc": "Verified",
+    "maskedPan": "PAN BBBXX5678B",
+    "customerSinceYears": 2,
+    "holdings": {
+      "sav-001": "Active"
+    },
+    "accounts": {
+      "availableBalance": 120000
+    }
+  },
+  {
+    "id": "u-003",
+    "name": "Suresh",
+    "age": 45,
+    "city": "Pune",
+    "employment": "Self-employed",
+    "monthlyIncome": 90000,
+    "creditScore": 640,
+    "existingEmi": 30000,
+    "kyc": "Verified",
+    "maskedPan": "PAN CCCXX9012C",
+    "customerSinceYears": 4,
+    "holdings": {
+      "sav-001": "Active",
+      "cc-003": "Pending"
+    },
+    "accounts": {
+      "availableBalance": 85000
+    }
+  },
+  {
+    "id": "u-004",
+    "name": "Kavya",
+    "age": 21,
+    "city": "Bengaluru",
+    "employment": "Student",
+    "monthlyIncome": 0,
+    "creditScore": null,
+    "existingEmi": 0,
+    "kyc": "Verified",
+    "maskedPan": "PAN DDDXX3456D",
+    "customerSinceYears": 1,
+    "holdings": {}
+  },
+  {
+    "id": "u-005",
+    "name": "Karthik",
+    "age": 38,
+    "city": "Hyderabad",
+    "employment": "Salaried",
+    "monthlyIncome": 110000,
+    "creditScore": 760,
+    "existingEmi": 65000,
+    "kyc": "Verified",
+    "maskedPan": "PAN EEEXX7890E",
+    "customerSinceYears": 8,
+    "holdings": {
+      "ln-001": "Active",
+      "sav-001": "Active"
+    },
+    "accounts": {
+      "availableBalance": 210000
+    }
+  },
+  {
+    "id": "u-006",
+    "name": "Lakshmi",
+    "age": 59,
+    "city": "Coimbatore",
+    "employment": "Salaried",
+    "monthlyIncome": 95000,
+    "creditScore": 800,
+    "existingEmi": 10000,
+    "kyc": "Verified",
+    "maskedPan": "PAN FFFXX2345F",
+    "customerSinceYears": 15,
+    "holdings": {
+      "sav-003": "Active",
+      "sav-001": "Active"
+    },
+    "accounts": {
+      "availableBalance": 340000,
+      "fixedDeposits": 1200000
+    }
+  },
+  {
+    "id": "u-007",
+    "name": "Imran",
+    "age": 34,
+    "city": "Mumbai",
+    "employment": "Salaried",
+    "monthlyIncome": 80000,
+    "creditScore": 710,
+    "existingEmi": 15000,
+    "kyc": "Pending",
+    "maskedPan": "PAN GGGXX6789G",
+    "customerSinceYears": 1,
+    "holdings": {}
+  }
+]
