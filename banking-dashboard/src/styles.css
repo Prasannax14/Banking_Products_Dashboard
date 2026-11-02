@@ -1175,6 +1175,253 @@ html, body {
 }
 
 /* =========================================================
+   User Info Switch & User Info Bar (SVG Charts)
+   ========================================================= */
+.user-info-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-family: inherit;
+  font-size: 0.825rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.user-info-switch:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.user-info-switch:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.switch-track {
+  width: 32px;
+  height: 18px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition: background var(--transition);
+}
+
+.user-info-switch.on .switch-track {
+  background: var(--teal);
+}
+
+.switch-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: translateX(0);
+  transition: transform var(--transition);
+}
+
+.user-info-switch.on .switch-thumb {
+  transform: translateX(14px);
+  background: var(--navy);
+}
+
+/* User Info Bar */
+.user-info-bar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+  animation: infoBarFadeIn 200ms ease;
+}
+
+@keyframes infoBarFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.info-bar-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .info-bar-inner {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+.info-tile {
+  background: var(--pearl);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-tile-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.info-tile-title {
+  font-size: 0.775rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--slate);
+}
+
+.usage-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.credit-tile-body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.credit-ring-wrap {
+  width: 86px;
+  height: 86px;
+  flex-shrink: 0;
+}
+
+.credit-ring-text {
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 1.15rem;
+  fill: var(--navy);
+}
+
+.credit-tile-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.credit-used-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.credit-limit-val {
+  font-size: 0.8rem;
+  color: var(--slate);
+}
+
+.total-balance-val {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.balance-bar-wrap {
+  width: 100%;
+}
+
+.stacked-svg-bar {
+  display: block;
+}
+
+.balance-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.825rem;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  color: var(--slate);
+}
+
+.legend-amount {
+  color: var(--navy);
+  margin-left: auto;
+}
+
+.legend-empty {
+  font-size: 0.8rem;
+  color: var(--slate);
+  font-style: italic;
+}
+
+.loan-active-count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--slate);
+}
+
+.loan-tile-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.loan-tile-figures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.loan-fig-label {
+  display: block;
+  font-size: 0.725rem;
+  color: var(--slate);
+}
+
+.loan-fig-amount {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.loan-fig-sub {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.loan-principal-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.loan-principal-caption {
+  font-size: 0.725rem;
+  color: var(--slate);
+}
+
+/* =========================================================
    Controls Actions (Search + Sort) & Copy Link
    ========================================================= */
 .controls-actions {

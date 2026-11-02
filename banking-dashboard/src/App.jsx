@@ -19,6 +19,8 @@ import RecommendedRow from "./components/RecommendedRow.jsx";
 import CompareTray from "./components/CompareTray.jsx";
 import CompareModal from "./components/CompareModal.jsx";
 import CopyLinkButton from "./components/CopyLinkButton.jsx";
+import UserInfoBar from "./components/UserInfoBar.jsx";
+import UserInfoSwitch from "./components/UserInfoSwitch.jsx";
 import Logo from "./components/Logo.jsx";
 import UserSwitcher from "./components/UserSwitcher.jsx";
 
@@ -261,6 +263,7 @@ export default function App() {
             </div>
             {selectedUser && (
               <div className="masthead-user">
+                <UserInfoSwitch checked={infoOpen} onChange={setInfoOpen} />
                 <CopyLinkButton />
                 <UserSwitcher
                   users={users}
@@ -276,6 +279,13 @@ export default function App() {
           </div>
         </div>
       </header>
+
+      {infoOpen && selectedUser && (
+        <UserInfoBar
+          user={selectedUser}
+          products={enrichedProducts}
+        />
+      )}
 
       <main className="wrap main">
         {loadError && (

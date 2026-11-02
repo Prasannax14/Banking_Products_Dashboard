@@ -98,6 +98,7 @@
       "metrics": [{ "label": "Interest rate from", "value": "6.85% p.a." }, { "label": "Amount up to", "value": "₹1,77,87,000" }],
       "activeMetrics": [{ "label": "Outstanding balance", "value": "₹21,43,000" }, { "label": "Next due date", "value": "05 Nov 2026" }],
       "outstandingAmount": 2143000,
+      "originalAmount": 21580000,
       "details": [
         { "label": "Outstanding balance", "value": "₹1,77,87,000" },
         { "label": "Original amount", "value": "₹2,15,80,000" },
@@ -156,6 +157,7 @@
       "metrics": [{ "label": "Interest rate from", "value": "6.40% p.a." }, { "label": "Amount up to", "value": "₹20,00,000" }],
       "activeMetrics": [{ "label": "Outstanding balance", "value": "₹14,20,000" }, { "label": "Next due date", "value": "10 Nov 2026" }],
       "outstandingAmount": 1420000,
+      "originalAmount": 2000000,
       "details": [
         { "label": "Tenure", "value": "5 years" },
         { "label": "Rate", "value": "Locked for the full tenure" },
