@@ -325,6 +325,17 @@ export default function App() {
         {!data && !loadError && (
           <div className="skeleton-grid-container" aria-label="Loading products" role="status">
             <p className="visually-hidden">Loading products…</p>
+            <div className="controls skeleton-controls" aria-hidden="true">
+              <div className="tabs">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <div key={i} className="skeleton-line skeleton-tab-placeholder" />
+                ))}
+              </div>
+              <div className="controls-actions">
+                <div className="skeleton-line skeleton-search-placeholder" />
+                <div className="skeleton-line skeleton-sort-placeholder" />
+              </div>
+            </div>
             <div className="grid">
               {[0, 1, 2, 3, 4, 5].map((idx) => (
                 <SkeletonCard key={idx} />

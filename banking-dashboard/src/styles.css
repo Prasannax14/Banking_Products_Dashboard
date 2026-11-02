@@ -825,10 +825,10 @@ html, body {
   flex-shrink: 0;
 }
 
-.elig-ok { background: var(--emerald-tint); color: var(--emerald); }
-.elig-ok .elig-dot { background: var(--emerald); }
-.elig-no { background: var(--crimson-tint); color: var(--crimson); }
-.elig-no .elig-dot { background: var(--crimson); }
+.elig-ok { background: var(--emerald-tint); color: #006644; }
+.elig-ok .elig-dot { background: #006644; }
+.elig-no { background: var(--crimson-tint); color: #B91C1C; }
+.elig-no .elig-dot { background: #B91C1C; }
 .elig-holds { background: var(--pearl); color: var(--slate); border: 1px solid var(--line); }
 .elig-holds .elig-dot { background: var(--slate); }
 
@@ -838,8 +838,8 @@ html, body {
   line-height: 1.4;
 }
 
-.elig-summary-ok { color: var(--emerald); }
-.elig-summary-no { color: var(--crimson); }
+.elig-summary-ok { color: #006644; font-weight: 600; }
+.elig-summary-no { color: #B91C1C; font-weight: 600; }
 
 .metrics {
   margin: 0;
@@ -1276,6 +1276,28 @@ html, body {
   height: 6px;
   border-radius: 3px;
   margin-top: 8px;
+}
+
+.skeleton-controls {
+  margin-bottom: 24px;
+}
+
+.skeleton-tab-placeholder {
+  width: 90px;
+  height: 44px;
+  border-radius: var(--radius);
+}
+
+.skeleton-search-placeholder {
+  width: 200px;
+  height: 44px;
+  border-radius: var(--radius);
+}
+
+.skeleton-sort-placeholder {
+  width: 140px;
+  height: 44px;
+  border-radius: var(--radius);
 }
 
 .skeleton-legend {
@@ -1899,6 +1921,8 @@ body.has-compare-tray .main {
   background: #ffffff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  min-height: 240px;
+  contain: layout;
 }
 
 .rec-header {
@@ -1987,9 +2011,9 @@ body.has-compare-tray .main {
 .rec-rate {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--emerald);
-  background: var(--emerald-tint);
-  padding: 2px 6px;
+  color: #006644;
+  background: #E6F4EA;
+  padding: 2px 8px;
   border-radius: 4px;
 }
 

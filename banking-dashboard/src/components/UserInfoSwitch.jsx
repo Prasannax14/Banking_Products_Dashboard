@@ -4,7 +4,7 @@ export default function UserInfoSwitch({ checked, onChange }) {
       type="button"
       role="switch"
       aria-checked={checked}
-      aria-controls="user-info-bar"
+      aria-controls={checked ? "user-info-bar" : undefined}
       className={"user-info-switch" + (checked ? " on" : "")}
       onClick={() => onChange(!checked)}
       aria-label="Toggle user account overview bar"

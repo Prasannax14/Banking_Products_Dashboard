@@ -52,7 +52,7 @@ export default function RecommendedRow({
       )}
 
       {recProducts.length > 0 ? (
-        <div className="rec-grid" role="list">
+        <div className="rec-grid">
           {recProducts.map((p) => {
             const catLabel = categoryLabels?.[p.category] || p.category;
             return (

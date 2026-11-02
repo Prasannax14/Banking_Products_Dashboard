@@ -24,7 +24,6 @@ export default function CategoryTabs({ categories, counts, active, onChange }) {
             role="tab"
             className="tab"
             aria-selected={isActive}
-            aria-pressed={isActive}
             onClick={() => onChange(t.id)}
           >
             {t.label}
