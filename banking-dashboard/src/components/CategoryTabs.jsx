@@ -13,7 +13,7 @@ export default function CategoryTabs({ categories, counts, active, onChange }) {
   }, [active]);
 
   return (
-    <div className="tabs" role="group" aria-label="Filter by product category">
+    <div className="tabs" role="tablist" aria-label="Filter by product category">
       {tabs.map((t) => {
         const isActive = active === t.id;
         return (
@@ -21,7 +21,9 @@ export default function CategoryTabs({ categories, counts, active, onChange }) {
             key={t.id}
             ref={isActive ? activeTabRef : null}
             type="button"
+            role="tab"
             className="tab"
+            aria-selected={isActive}
             aria-pressed={isActive}
             onClick={() => onChange(t.id)}
           >
