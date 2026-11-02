@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { formatINR } from "../utils/format.js";
+import LoanCalculator from "./LoanCalculator.jsx";
 
 // Modal using the native <dialog>: focus trap and Esc to close come built in.
 export default function ProductDetails({
@@ -115,6 +116,13 @@ export default function ProductDetails({
                 </>
               )}
             </section>
+          )}
+
+          {isLoan && (
+            <LoanCalculator
+              product={product}
+              eligibility={eligibility}
+            />
           )}
         </div>
 

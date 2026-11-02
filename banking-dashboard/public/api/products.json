@@ -19,33 +19,82 @@
     }
   ],
   "products": [
-    { "id": "sav-001", "name": "Everyday Savings", "category": "savings", "status": "Available",
+    {
+      "id": "sav-001",
+      "name": "Everyday Savings",
+      "category": "savings",
+      "status": "Available",
+      "sortRate": 3.10,
+      "sortLimit": 1036000,
       "metrics": [{ "label": "Interest rate", "value": "3.10% p.a." }, { "label": "Balance", "value": "₹10,36,000" }],
       "details": [{ "label": "Minimum balance", "value": "₹41,500" }, { "label": "Interest paid", "value": "Monthly" }, { "label": "Withdrawals", "value": "Unlimited" }],
-      "ctaLabel": "Apply" },
-    { "id": "sav-002", "name": "High-Yield Savings", "category": "savings", "status": "Available",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "sav-002",
+      "name": "High-Yield Savings",
+      "category": "savings",
+      "status": "Available",
+      "sortRate": 4.60,
+      "sortLimit": null,
       "metrics": [{ "label": "Interest rate", "value": "4.60% p.a." }, { "label": "Minimum deposit", "value": "₹83,000" }],
       "details": [{ "label": "Interest paid", "value": "Monthly" }, { "label": "Free withdrawals", "value": "3 per month" }, { "label": "Account fee", "value": "None" }],
-      "ctaLabel": "Apply" },
-    { "id": "sav-003", "name": "Fixed Deposit 12M", "category": "savings", "status": "Available",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "sav-003",
+      "name": "Fixed Deposit 12M",
+      "category": "savings",
+      "status": "Available",
+      "sortRate": 5.25,
+      "sortLimit": 830000,
       "metrics": [{ "label": "Interest rate", "value": "5.25% p.a." }, { "label": "Matures on", "value": "14 Mar 2027" }],
       "details": [{ "label": "Deposit", "value": "₹8,30,000" }, { "label": "Term", "value": "12 months" }, { "label": "Interest paid", "value": "At maturity" }],
-      "ctaLabel": "Apply" },
+      "ctaLabel": "Apply"
+    },
 
-    { "id": "cc-001", "name": "Platinum Rewards Card", "category": "credit-card", "status": "Available",
+    {
+      "id": "cc-001",
+      "name": "Platinum Rewards Card",
+      "category": "credit-card",
+      "status": "Available",
+      "sortRate": null,
+      "sortLimit": 830000,
       "metrics": [{ "label": "Available limit", "value": "₹6,81,000" }, { "label": "Next due date", "value": "12 Nov 2026" }],
       "details": [{ "label": "Credit limit", "value": "₹8,30,000" }, { "label": "Annual fee", "value": "₹0" }, { "label": "Statement date", "value": "22nd of each month" }],
-      "ctaLabel": "Apply" },
-    { "id": "cc-002", "name": "Travel Miles Card", "category": "credit-card", "status": "Available",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "cc-002",
+      "name": "Travel Miles Card",
+      "category": "credit-card",
+      "status": "Available",
+      "sortRate": 19.9,
+      "sortLimit": 1245000,
       "metrics": [{ "label": "Credit limit up to", "value": "₹12,45,000" }, { "label": "Annual fee", "value": "₹7,900" }],
       "details": [{ "label": "Rewards", "value": "3 reward points per ₹100 spent abroad" }, { "label": "Foreign transaction fee", "value": "None" }, { "label": "Purchase interest", "value": "19.9% p.a." }],
-      "ctaLabel": "Apply" },
-    { "id": "cc-003", "name": "Cashback Card", "category": "credit-card", "status": "Available",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "cc-003",
+      "name": "Cashback Card",
+      "category": "credit-card",
+      "status": "Available",
+      "sortRate": null,
+      "sortLimit": 415000,
       "metrics": [{ "label": "Requested limit", "value": "₹4,15,000" }, { "label": "Cashback", "value": "2% on groceries" }],
       "details": [{ "label": "Cashback cap", "value": "₹4,200 per month" }, { "label": "Annual fee", "value": "₹0" }, { "label": "Application", "value": "Under review" }],
-      "ctaLabel": "Apply" },
+      "ctaLabel": "Apply"
+    },
 
-    { "id": "ln-001", "name": "Home Loan", "category": "loan", "status": "Available", "interestType": "floating",
+    {
+      "id": "ln-001",
+      "name": "Home Loan",
+      "category": "loan",
+      "status": "Available",
+      "interestType": "floating",
+      "sortRate": 6.85,
+      "sortLimit": 17787000,
       "metrics": [{ "label": "Interest rate from", "value": "6.85% p.a." }, { "label": "Amount up to", "value": "₹1,77,87,000" }],
       "activeMetrics": [{ "label": "Outstanding balance", "value": "₹21,43,000" }, { "label": "Next due date", "value": "05 Nov 2026" }],
       "outstandingAmount": 2143000,
@@ -67,8 +116,16 @@
         "minLoanAmount": 500000,
         "allowedEmployment": null
       },
-      "ctaLabel": "Apply" },
-    { "id": "ln-002", "name": "Personal Loan", "category": "loan", "status": "Available", "interestType": "fixed",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "ln-002",
+      "name": "Personal Loan",
+      "category": "loan",
+      "status": "Available",
+      "interestType": "fixed",
+      "sortRate": 7.90,
+      "sortLimit": 3320000,
       "metrics": [{ "label": "Interest rate from", "value": "7.90% p.a." }, { "label": "Amount up to", "value": "₹33,20,000" }],
       "details": [
         { "label": "Tenure", "value": "1 to 5 years" },
@@ -86,8 +143,16 @@
         "minLoanAmount": 50000,
         "allowedEmployment": null
       },
-      "ctaLabel": "Apply" },
-    { "id": "ln-003", "name": "Auto Loan", "category": "loan", "status": "Available", "interestType": "fixed",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "ln-003",
+      "name": "Auto Loan",
+      "category": "loan",
+      "status": "Available",
+      "interestType": "fixed",
+      "sortRate": 6.40,
+      "sortLimit": 2000000,
       "metrics": [{ "label": "Interest rate from", "value": "6.40% p.a." }, { "label": "Amount up to", "value": "₹20,00,000" }],
       "activeMetrics": [{ "label": "Outstanding balance", "value": "₹14,20,000" }, { "label": "Next due date", "value": "10 Nov 2026" }],
       "outstandingAmount": 1420000,
@@ -106,8 +171,16 @@
         "minLoanAmount": 100000,
         "allowedEmployment": null
       },
-      "ctaLabel": "Apply" },
-    { "id": "ln-004", "name": "Fixed-Rate Home Loan", "category": "loan", "status": "Available", "interestType": "fixed",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "ln-004",
+      "name": "Fixed-Rate Home Loan",
+      "category": "loan",
+      "status": "Available",
+      "interestType": "fixed",
+      "sortRate": 7.25,
+      "sortLimit": 41500000,
       "metrics": [{ "label": "Interest rate from", "value": "7.25% p.a." }, { "label": "Amount up to", "value": "₹4,15,00,000" }],
       "details": [
         { "label": "Tenure", "value": "Up to 25 years" },
@@ -125,8 +198,17 @@
         "minLoanAmount": 1000000,
         "allowedEmployment": null
       },
-      "ctaLabel": "Apply" },
-    { "id": "ln-005", "name": "Education Loan", "category": "loan", "status": "Available", "interestType": "floating",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "ln-005",
+      "name": "Education Loan",
+      "category": "loan",
+      "status": "Available",
+      "interestType": "floating",
+      "audience": ["Student"],
+      "sortRate": 6.50,
+      "sortLimit": 4980000,
       "metrics": [{ "label": "Interest rate from", "value": "6.50% p.a." }, { "label": "Amount up to", "value": "₹49,80,000" }],
       "details": [
         { "label": "Tenure", "value": "Up to 10 years" },
@@ -146,19 +228,41 @@
         "allowedEmployment": null,
         "note": "Co-applicant assumed; income, credit score and repayment-burden checks are skipped."
       },
-      "ctaLabel": "Apply" },
+      "ctaLabel": "Apply"
+    },
 
-    { "id": "wl-001", "name": "Managed Portfolio", "category": "wealth", "status": "Available",
+    {
+      "id": "wl-001",
+      "name": "Managed Portfolio",
+      "category": "wealth",
+      "status": "Available",
+      "sortRate": 8.4,
+      "sortLimit": 4889000,
       "metrics": [{ "label": "Portfolio value", "value": "₹48,89,000" }, { "label": "1-year return", "value": "+8.4%" }],
       "details": [{ "label": "Strategy", "value": "Balanced growth" }, { "label": "Management fee", "value": "0.75% p.a." }, { "label": "Review", "value": "Quarterly" }],
-      "ctaLabel": "Apply" },
-    { "id": "wl-002", "name": "Index Fund Plan", "category": "wealth", "status": "Available",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "wl-002",
+      "name": "Index Fund Plan",
+      "category": "wealth",
+      "status": "Available",
+      "sortRate": null,
+      "sortLimit": null,
       "metrics": [{ "label": "Minimum investment", "value": "₹41,500" }, { "label": "Annual fee", "value": "0.20%" }],
       "details": [{ "label": "Holdings", "value": "Broad market index" }, { "label": "Contributions", "value": "Monthly or one-off" }, { "label": "Withdrawals", "value": "Any time" }],
-      "ctaLabel": "Apply" },
-    { "id": "wl-003", "name": "Retirement Savings Plan", "category": "wealth", "status": "Available",
+      "ctaLabel": "Apply"
+    },
+    {
+      "id": "wl-003",
+      "name": "Retirement Savings Plan",
+      "category": "wealth",
+      "status": "Available",
+      "sortRate": null,
+      "sortLimit": 2594000,
       "metrics": [{ "label": "Current value", "value": "₹25,94,000" }, { "label": "Monthly contribution", "value": "₹33,200" }],
       "details": [{ "label": "Strategy", "value": "Long-term growth" }, { "label": "Management fee", "value": "0.45% p.a." }, { "label": "Access", "value": "From age 60" }],
-      "ctaLabel": "View Details" }
+      "ctaLabel": "View Details"
+    }
   ]
 }

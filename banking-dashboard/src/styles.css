@@ -1175,6 +1175,218 @@ html, body {
 }
 
 /* =========================================================
+   Loan Calculator & Rate Shock
+   ========================================================= */
+.loan-calculator {
+  margin-top: 24px;
+  padding: 18px;
+  background: var(--pearl);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.calc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.calc-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.calc-badge-indicative {
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: var(--crimson-tint);
+  color: var(--crimson);
+}
+
+.calc-note {
+  margin: 10px 0 0;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-left: 3px solid var(--crimson);
+  border-radius: 4px;
+  font-size: 0.825rem;
+  color: var(--charcoal);
+  line-height: 1.4;
+}
+
+.calc-controls {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calc-field-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.calc-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.calc-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.calc-value-shock {
+  color: var(--crimson);
+}
+
+.calc-slider {
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  accent-color: var(--navy);
+  cursor: pointer;
+}
+
+.calc-slider:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.calc-range-limits {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.725rem;
+  color: var(--slate);
+}
+
+.calc-fixed-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--teal-tint);
+  color: var(--navy);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.calc-summary {
+  margin-top: 20px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.calc-summary-primary {
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.calc-summary-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--slate);
+  font-weight: 600;
+}
+
+.calc-summary-amount {
+  display: block;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.calc-summary-rate {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--slate);
+  margin-top: 4px;
+}
+
+.calc-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.calc-summary-item dt {
+  font-size: 0.75rem;
+  color: var(--slate);
+}
+
+.calc-summary-item dd {
+  margin: 2px 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.calc-shock-result {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+
+.calc-shock-title {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.calc-shock-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  margin: 0;
+}
+
+.calc-shock-grid dt {
+  font-size: 0.75rem;
+  color: var(--slate);
+}
+
+.calc-shock-grid dd {
+  margin: 2px 0 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.calc-shock-grid .shock-highlight {
+  color: var(--crimson);
+}
+
+.calc-shock-grid .shock-diff {
+  color: var(--crimson);
+}
+
+/* =========================================================
    Reduced Motion
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {

@@ -9,18 +9,16 @@
  */
 
 import { formatINR, formatLakh } from "./format.js";
+import { calculateEmi } from "./emi.js";
 
-// ---------- EMI formula: P*r*(1+r)^n / ((1+r)^n - 1) ----------
+// ---------- EMI formula helper delegating to pure calculateEmi ----------
 function calcEmi(principal, annualRatePct, tenureMonths) {
-  if (principal <= 0 || tenureMonths <= 0) return 0;
-  if (annualRatePct === 0) return principal / tenureMonths;
-  const r = annualRatePct / 12 / 100;
-  const n = tenureMonths;
-  return (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  return calculateEmi(principal, annualRatePct, tenureMonths).emi;
 }
 
-// ---------- Parse the "Amount up to" string from products.json ----------
+// ---------- Parse the "Amount up to" from products.json (fallback) ----------
 function parseMaxAmountFromProduct(loan) {
+  if (typeof loan.sortLimit === "number") return loan.sortLimit;
   const metric = (loan.metrics || []).find((m) =>
     m.label.toLowerCase().includes("amount")
   );
@@ -30,8 +28,9 @@ function parseMaxAmountFromProduct(loan) {
   return isNaN(num) ? Infinity : num;
 }
 
-// ---------- Parse the "Interest rate from" metric ----------
+// ---------- Parse the "Interest rate from" metric (fallback) ----------
 function parseBaseRate(loan) {
+  if (typeof loan.sortRate === "number") return loan.sortRate;
   const metric = (loan.metrics || []).find((m) =>
     m.label.toLowerCase().includes("interest rate")
   );
@@ -57,17 +56,6 @@ export function foirPct(existingEmi, newEmi, income) {
 
 // ---------- Main export ----------
 export function checkLoanEligibility(user, loan, userStatus) {
-  // "already_holds" short-circuit
-  if (userStatus === "Active" || userStatus === "Pending") {
-    return {
-      result: "already_holds",
-      checks: [],
-      maxAmount: null,
-      indicativeRate: null,
-      estimatedEmi: null,
-    };
-  }
-
   const el = loan.eligibility;
   if (!el) {
     return {
@@ -100,6 +88,17 @@ export function checkLoanEligibility(user, loan, userStatus) {
 
   const isCoApp = !!el.coApplicantAssumed;
   const indicativeRate = isCoApp ? baseRate : baseRate + rateAdj;
+
+  // "already_holds" short-circuit
+  if (userStatus === "Active" || userStatus === "Pending") {
+    return {
+      result: "already_holds",
+      checks: [],
+      maxAmount: null,
+      indicativeRate,
+      estimatedEmi: null,
+    };
+  }
 
   let maxAmount = 0;
   let estimatedEmi = 0;
@@ -262,7 +261,7 @@ export function checkLoanEligibility(user, loan, userStatus) {
     result: allPass ? "eligible" : "not_eligible",
     checks,
     maxAmount: allPass ? maxAmount : null,
-    indicativeRate: allPass ? indicativeRate : null,
+    indicativeRate,
     estimatedEmi: allPass ? estimatedEmi : null,
   };
 }
