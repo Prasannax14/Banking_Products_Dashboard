@@ -21,6 +21,8 @@ import CompareModal from "./components/CompareModal.jsx";
 import CopyLinkButton from "./components/CopyLinkButton.jsx";
 import UserInfoBar from "./components/UserInfoBar.jsx";
 import UserInfoSwitch from "./components/UserInfoSwitch.jsx";
+import SkeletonCard from "./components/SkeletonCard.jsx";
+import SkeletonInfoBar from "./components/SkeletonInfoBar.jsx";
 import Logo from "./components/Logo.jsx";
 import UserSwitcher from "./components/UserSwitcher.jsx";
 
@@ -41,7 +43,10 @@ export default function App() {
   const [isInitialized, setIsInitialized] = useState(false);
 
   // Load products and users, then initialize state from URL
-  useEffect(() => {
+  const loadData = () => {
+    setLoadError(null);
+    setData(null);
+
     Promise.all([fetchProducts(), fetchUsers()])
       .then(([productData, userData]) => {
         setData(productData);
@@ -73,6 +78,10 @@ export default function App() {
         setIsInitialized(true);
       })
       .catch((e) => setLoadError(e.message));
+  };
+
+  useEffect(() => {
+    loadData();
   }, []);
 
   // Debounce search query to 300ms for URL synchronization
@@ -286,14 +295,43 @@ export default function App() {
           products={enrichedProducts}
         />
       )}
+      {infoOpen && !data && !loadError && (
+        <SkeletonInfoBar />
+      )}
 
       <main className="wrap main">
         {loadError && (
-          <p className="state state-error" role="alert">
-            Couldn't load data: {loadError}. Refresh to try again.
-          </p>
+          <div className="state-error-box" role="alert">
+            <div className="error-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="var(--crimson)" strokeWidth="2" />
+                <path d="M12 7v6M12 16v1" stroke="var(--crimson)" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </div>
+            <div>
+              <h2 className="error-title">Couldn't load dashboard data</h2>
+              <p className="error-msg">{loadError}</p>
+              <button
+                type="button"
+                className="cta cta-primary retry-btn"
+                onClick={loadData}
+              >
+                Try again
+              </button>
+            </div>
+          </div>
         )}
-        {!data && !loadError && <p className="state" role="status">Loading…</p>}
+
+        {!data && !loadError && (
+          <div className="skeleton-grid-container" aria-label="Loading products" role="status">
+            <p className="visually-hidden">Loading products…</p>
+            <div className="grid">
+              {[0, 1, 2, 3, 4, 5].map((idx) => (
+                <SkeletonCard key={idx} />
+              ))}
+            </div>
+          </div>
+        )}
 
         {data && (
           <>
