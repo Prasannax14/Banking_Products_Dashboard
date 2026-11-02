@@ -210,3 +210,4 @@ export default function LoanCalculator({ product, eligibility }) {
     </section>
   );
 }
+

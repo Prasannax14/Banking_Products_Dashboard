@@ -76,3 +76,4 @@ export function emiAfterRateRise(principal, annualRatePct, months, risePct = 0) 
     shockedTotalPayable: shocked.totalPayable,
   };
 }
+

@@ -80,3 +80,4 @@ describe("checkLoanEligibility 'How to fix' strings", () => {
     expect(ageEndCheck.fix).toBe("Not available for this age");
   });
 });
+

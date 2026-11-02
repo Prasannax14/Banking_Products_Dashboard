@@ -96,3 +96,4 @@ describe("sortProducts", () => {
     expect(sorted.map((i) => i.id)).toEqual(["1", "2", "3", "4"]);
   });
 });
+

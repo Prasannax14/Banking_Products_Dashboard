@@ -390,3 +390,4 @@ banking-products-dashboard/
 ## ⚖️ Disclaimer
 
 All data, account balances, PAN numbers, credit scores, and customer profiles presented in this application are **entirely fictional** and generated solely for product demonstration and software engineering portfolio evaluation. Masked PAN numbers and simulated financial profiles do not represent real persons or institutions. Nothing contained in this project constitutes financial, investment, legal, or lending advice.
+

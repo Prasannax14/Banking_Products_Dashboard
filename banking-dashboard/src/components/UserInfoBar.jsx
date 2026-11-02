@@ -278,3 +278,4 @@ export default function UserInfoBar({ user, products = [] }) {
     </section>
   );
 }
+

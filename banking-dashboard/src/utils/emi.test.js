@@ -54,3 +54,4 @@ describe("emiAfterRateRise", () => {
     expect(shock.shockedEmi).toBe(shock.emi);
   });
 });
+

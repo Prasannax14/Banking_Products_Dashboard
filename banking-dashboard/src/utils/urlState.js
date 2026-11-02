@@ -180,3 +180,4 @@ export function serializeUrlState(state = {}) {
   const str = params.toString();
   return str ? `?${str}` : "";
 }
+

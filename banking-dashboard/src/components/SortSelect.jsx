@@ -19,3 +19,4 @@ export default function SortSelect({ value, onChange }) {
     </div>
   );
 }
+

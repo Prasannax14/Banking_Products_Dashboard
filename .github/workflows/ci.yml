@@ -32,3 +32,4 @@ jobs:
       - name: Build production bundle
         working-directory: ./banking-dashboard
         run: npm run build
+
