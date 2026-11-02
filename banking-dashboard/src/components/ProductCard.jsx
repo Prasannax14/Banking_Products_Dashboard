@@ -2,7 +2,16 @@ import { formatINR } from "../utils/format.js";
 
 // One card renders every product type: the data shape is identical.
 // For loan cards, eligibility is passed and displayed as a badge + summary line.
-export default function ProductCard({ product, categoryLabel, interestType, onAction, eligibility }) {
+export default function ProductCard({
+  product,
+  categoryLabel,
+  interestType,
+  onAction,
+  eligibility,
+  isCompared = false,
+  canCompareMore = true,
+  onToggleCompare,
+}) {
   const isLoan = product.category === "loan";
   const { name, metrics, ctaLabel } = product;
 
@@ -63,7 +72,30 @@ export default function ProductCard({ product, categoryLabel, interestType, onAc
   return (
     <article className="card">
       <header className="card-head">
-        <p className="card-category">{categoryLabel}</p>
+        <div className="card-head-left">
+          <p className="card-category">{categoryLabel}</p>
+          {onToggleCompare && (
+            <label className={"card-compare" + (!canCompareMore && !isCompared ? " disabled" : "")}>
+              <input
+                type="checkbox"
+                checked={isCompared}
+                disabled={!canCompareMore && !isCompared}
+                onChange={() => onToggleCompare(product.id)}
+                aria-label={
+                  !canCompareMore && !isCompared
+                    ? `Compare ${name} (Maximum 3 products reached)`
+                    : `Compare ${name}`
+                }
+                title={
+                  !canCompareMore && !isCompared
+                    ? "You can compare up to 3 products at a time"
+                    : undefined
+                }
+              />
+              <span>Compare</span>
+            </label>
+          )}
+        </div>
         <span className={"status status-" + status.toLowerCase()}>{status}</span>
       </header>
       <h3 className="card-title">{name}</h3>

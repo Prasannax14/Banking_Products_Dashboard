@@ -1,4 +1,5 @@
 import ProductCard from "./ProductCard.jsx";
+import { sortProducts } from "../utils/urlState.js";
 
 export default function ProductGrid({
   products,
@@ -8,6 +9,9 @@ export default function ProductGrid({
   onReset,
   eligibilityMap, // { [productId]: eligibility result } — only for loan products
   isLoanTab,
+  comparedIds = [],
+  onToggleCompare,
+  sortMode = "recommended",
 }) {
   if (products.length === 0) {
     return (
@@ -42,10 +46,12 @@ export default function ProductGrid({
       }
     });
 
+    const canCompareMore = comparedIds.length < 3;
+
     const groups = [
-      { id: "active", title: "Your active loans", items: activeLoans },
-      { id: "eligible", title: "You can apply for", items: eligibleLoans },
-      { id: "not-eligible", title: "Not available right now", items: notEligibleLoans },
+      { id: "active", title: "Your active loans", items: sortProducts(activeLoans, sortMode) },
+      { id: "eligible", title: "You can apply for", items: sortProducts(eligibleLoans, sortMode) },
+      { id: "not-eligible", title: "Not available right now", items: sortProducts(notEligibleLoans, sortMode) },
     ].filter((g) => g.items.length > 0);
 
     return (
@@ -64,6 +70,9 @@ export default function ProductGrid({
                   interestType={interestTypes[p.interestType]}
                   onAction={onAction}
                   eligibility={eligibilityMap ? eligibilityMap[p.id] : undefined}
+                  isCompared={comparedIds.includes(p.id)}
+                  canCompareMore={canCompareMore || comparedIds.includes(p.id)}
+                  onToggleCompare={onToggleCompare}
                 />
               ))}
             </div>
@@ -72,6 +81,8 @@ export default function ProductGrid({
       </div>
     );
   }
+
+  const canCompareMore = comparedIds.length < 3;
 
   // Flat grid for "All", "Savings", "Credit cards", "Wealth"
   return (
@@ -84,6 +95,9 @@ export default function ProductGrid({
           interestType={interestTypes[p.interestType]}
           onAction={onAction}
           eligibility={eligibilityMap ? eligibilityMap[p.id] : undefined}
+          isCompared={comparedIds.includes(p.id)}
+          canCompareMore={canCompareMore || comparedIds.includes(p.id)}
+          onToggleCompare={onToggleCompare}
         />
       ))}
     </div>
