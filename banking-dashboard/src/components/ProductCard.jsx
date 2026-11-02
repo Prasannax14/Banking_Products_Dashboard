@@ -54,7 +54,7 @@ export default function ProductCard({ product, categoryLabel, interestType, onAc
       );
       eligSummary = (
         <p id={reasonId} className="elig-summary elig-summary-no">
-          {firstFail ? firstFail.detail : "Does not meet eligibility criteria."}
+          {firstFail ? (firstFail.fix || firstFail.detail) : "Does not meet eligibility criteria."}
         </p>
       );
     }

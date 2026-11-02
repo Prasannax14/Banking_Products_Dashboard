@@ -2,11 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { fetchProducts } from "./api/productsApi.js";
 import { fetchUsers } from "./api/usersApi.js";
 import { checkLoanEligibility } from "./utils/loanEligibility.js";
+import { recommendProducts } from "./utils/recommend.js";
 import CategoryTabs from "./components/CategoryTabs.jsx";
 import SearchBox from "./components/SearchBox.jsx";
 import InterestTypeFilter from "./components/InterestTypeFilter.jsx";
 import ProductGrid from "./components/ProductGrid.jsx";
 import ProductDetails from "./components/ProductDetails.jsx";
+import RecommendedRow from "./components/RecommendedRow.jsx";
 import Logo from "./components/Logo.jsx";
 import UserSwitcher from "./components/UserSwitcher.jsx";
 
@@ -109,6 +111,12 @@ export default function App() {
     ? eligibilityMap[selected.id]
     : null;
 
+  // Recommendations for the selected user (up to 3)
+  const recommendations = useMemo(() => {
+    if (!selectedUser || !data?.products) return [];
+    return recommendProducts(selectedUser, data.products);
+  }, [selectedUser, data]);
+
   return (
     <>
       <header className="masthead">
@@ -164,6 +172,16 @@ export default function App() {
                 userName={selectedUser?.name}
                 eligibleOnly={eligibleOnly}
                 onToggleEligibleOnly={setEligibleOnly}
+              />
+            )}
+
+            {category === "all" && (
+              <RecommendedRow
+                recommendations={recommendations}
+                products={enrichedProducts}
+                userName={selectedUser?.name}
+                onSelectProduct={setSelected}
+                categoryLabels={categoryLabels}
               />
             )}
 

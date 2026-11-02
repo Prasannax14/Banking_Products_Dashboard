@@ -87,6 +87,22 @@ export default function ProductDetails({
                     ))}
                   </ul>
 
+                  {eligibility.result === "not_eligible" && (
+                    <div className="elig-qualify" aria-labelledby="qualify-heading">
+                      <h4 id="qualify-heading" className="elig-qualify-heading">How to qualify</h4>
+                      <ul className="elig-qualify-list" role="list">
+                        {(eligibility.checks || [])
+                          .filter((c) => !c.pass && c.fix)
+                          .map((c) => (
+                            <li key={c.id} className="elig-qualify-item">
+                              <span className="qualify-dot" aria-hidden="true" />
+                              <span>{c.fix}</span>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  )}
+
                   {eligibility.result === "eligible" && eligibility.maxAmount != null && (
                     <div className="elig-terms">
                       <p className="elig-terms-heading">Indicative terms</p>

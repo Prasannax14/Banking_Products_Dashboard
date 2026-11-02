@@ -141,6 +141,7 @@ export function checkLoanEligibility(user, loan, userStatus) {
     label: "KYC verified",
     pass: kycPass,
     detail: kycPass ? "KYC is verified." : "KYC status is " + user.kyc + ". Must be Verified.",
+    fix: kycPass ? null : "Complete your KYC verification",
   });
 
   // 2. Minimum age
@@ -152,6 +153,7 @@ export function checkLoanEligibility(user, loan, userStatus) {
     detail: agePass
       ? "Age " + user.age + " meets the minimum of " + el.minAge + "."
       : "Age " + user.age + ", needs " + el.minAge + " or above.",
+    fix: agePass ? null : "Not available for this age",
   });
 
   // 3. Age at loan end
@@ -164,6 +166,7 @@ export function checkLoanEligibility(user, loan, userStatus) {
     detail: ageEndPass
       ? "Age at maturity " + Math.ceil(ageAtEnd) + " is within limit of " + el.maxAgeAtMaturity + "."
       : "Age at maturity would be " + Math.ceil(ageAtEnd) + ", limit is " + el.maxAgeAtMaturity + ".",
+    fix: ageEndPass ? null : "Not available for this age",
   });
 
   // 4. Monthly income
@@ -173,17 +176,22 @@ export function checkLoanEligibility(user, loan, userStatus) {
       label: "Monthly income",
       pass: true,
       detail: "Co-applicant assumed; income check not required.",
+      fix: null,
     });
   } else {
     let incomePass = true;
     let incomeDetail = "Income check not required.";
+    let incomeFix = null;
     if (el.minMonthlyIncome > 0) {
       incomePass = (user.monthlyIncome || 0) >= el.minMonthlyIncome;
       incomeDetail = incomePass
         ? "Monthly income " + formatINR(user.monthlyIncome || 0) + " meets the minimum of " + formatINR(el.minMonthlyIncome) + "."
         : "Monthly income " + formatINR(user.monthlyIncome || 0) + ", needs " + formatINR(el.minMonthlyIncome) + " or above.";
+      if (!incomePass) {
+        incomeFix = "Monthly income needs to be at least Rs " + formatINR(el.minMonthlyIncome).replace("₹", "");
+      }
     }
-    checks.push({ id: "income", label: "Monthly income", pass: incomePass, detail: incomeDetail });
+    checks.push({ id: "income", label: "Monthly income", pass: incomePass, detail: incomeDetail, fix: incomeFix });
   }
 
   // 5. Credit score
@@ -193,22 +201,29 @@ export function checkLoanEligibility(user, loan, userStatus) {
       label: "Credit score",
       pass: true,
       detail: "Co-applicant assumed; credit score check not required.",
+      fix: null,
     });
   } else {
     let scorePass = true;
     let scoreDetail = "Credit score check not required.";
+    let scoreFix = null;
     if (el.minCreditScore > 0) {
       if (user.creditScore === null || user.creditScore === undefined) {
         scorePass = false;
         scoreDetail = "No credit history. A score of " + el.minCreditScore + " or above is needed.";
+        scoreFix = "Raise your credit score by " + el.minCreditScore + " points to reach " + el.minCreditScore;
       } else {
         scorePass = user.creditScore >= el.minCreditScore;
         scoreDetail = scorePass
           ? "Credit score " + user.creditScore + " meets the minimum of " + el.minCreditScore + "."
           : "Credit score " + user.creditScore + ", needs " + el.minCreditScore + " or above.";
+        if (!scorePass) {
+          const diff = el.minCreditScore - user.creditScore;
+          scoreFix = "Raise your credit score by " + diff + " points to reach " + el.minCreditScore;
+        }
       }
     }
-    checks.push({ id: "score", label: "Credit score", pass: scorePass, detail: scoreDetail });
+    checks.push({ id: "score", label: "Credit score", pass: scorePass, detail: scoreDetail, fix: scoreFix });
   }
 
   // 6. Repayment burden (FOIR)
@@ -218,6 +233,7 @@ export function checkLoanEligibility(user, loan, userStatus) {
       label: "Repayment burden (FOIR)",
       pass: true,
       detail: "Co-applicant assumed; repayment burden check skipped.",
+      fix: null,
     });
   } else {
     const monthlyIncome = user.monthlyIncome || 0;
@@ -225,6 +241,7 @@ export function checkLoanEligibility(user, loan, userStatus) {
     const foirPass = monthlyIncome > 0 && foirCap >= minLoanAmount;
 
     let foirDetail = "";
+    let foirFix = null;
     if (foirPass) {
       const foir = ((existingEmi + estimatedEmi) / monthlyIncome) * 100;
       foirDetail = "Repayment burden " + foir.toFixed(0) + "% — within the 50% limit.";
@@ -232,6 +249,12 @@ export function checkLoanEligibility(user, loan, userStatus) {
       const roomStr = formatLakh(Math.max(0, foirCap));
       const minStr = formatLakh(minLoanAmount);
       foirDetail = "Your EMIs leave room for about " + roomStr + ", but this loan starts at " + minStr + ".";
+
+      // Compute X from minimum loan amount and 50% limit using emi.js
+      const minLoanEmi = calculateEmi(minLoanAmount, indicativeRate, tenure).emi;
+      const maxAllowedExistingEmi = monthlyIncome * 0.5 - minLoanEmi;
+      const reductionNeeded = Math.max(0, Math.round(existingEmi - maxAllowedExistingEmi));
+      foirFix = "Reduce existing EMIs by about Rs " + formatINR(reductionNeeded).replace("₹", "") + " per month, or choose a smaller amount";
     }
 
     checks.push({
@@ -239,6 +262,7 @@ export function checkLoanEligibility(user, loan, userStatus) {
       label: "Repayment burden (FOIR)",
       pass: foirPass,
       detail: foirDetail,
+      fix: foirFix,
     });
   }
 
@@ -252,6 +276,7 @@ export function checkLoanEligibility(user, loan, userStatus) {
       detail: empPass
         ? user.employment + " is an accepted employment type."
         : user.employment + " is not accepted. Accepted: " + el.allowedEmployment.join(", ") + ".",
+      fix: empPass ? null : "Employment type not accepted",
     });
   }
 
